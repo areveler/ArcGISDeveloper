@@ -1,0 +1,63 @@
+<!-- The Locate widget finds and zooms to your current location after you click the button, whereas the Track widget animates the view to your location at an interval. The Track widget is useful for building applications that provide driving directions and follow routes-->
+
+<!--Not displaying content, comment out API key and it leads you to login (no organizatin login)-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>ArcGIS Maps SDK for JavaScript Tutorials: Display a map</title>
+
+    <style> /*resets brower so it can take up the full width and page*/
+      html,
+      body,
+      #viewDiv {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+
+    <!--AMD modules, required (or others) uses reference to determine which modles will be loaded eg. "esri/Map"-->
+    <link rel="stylesheet" href="https://js.arcgis.com/4.28/esri/themes/light/main.css">
+    <script src="https://js.arcgis.com/4.28/"></script>
+
+
+    <!--After the modules are loaded, they are passed as parameters (e.g. Map) to the callback function where they can be used in your application. It is important to keep the module references and callback parameters in the same order. -->
+    <script>
+        require(["esri/config", "esri/Map", "esri/views/MapView", "esri/widget/Locate",], function(esriConfig, Map, MapView, Locate,) {
+  
+            //esriConfig.apiKey = "AAPKc8152f6cf74f4154a6f3a0f162f279f0ap849nbSkQHGytlqFycoHc64UMmI-k5VJLP2rtbOtxRWITQjVMSBbyTXPhL9hajF"; //API key
+
+        const map = new Map({ //create new map
+          basemap: "arcgis/navigation" // basemap styles service
+        });
+
+        const view = new MapView({ //set the location of the map to display
+            container:"viewDiv",
+            map: map,
+            center: [-40,28], // Longitude, latitude
+            zoom: 2, // Zoom level
+            container: "viewDiv" // Div element
+        });
+
+        const locate = new Locate({
+          view: view,
+          useHeadingEnabled: false,
+          goToOverride: function(view, options) {
+            options.target.scale = 1500;
+            return view.goTo(options.target);
+          }
+        });
+        view.ui.add(locate, "top-left");
+
+
+        });
+    </script>
+  
+
+  </head>
+  <body>
+    <div id="viewDiv"></div>  <!-- where the map goes -->
+  </body>
+</html>
