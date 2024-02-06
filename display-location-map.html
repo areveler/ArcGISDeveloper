@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <title>ArcGIS Maps SDK for JavaScript Tutorials: Location Map</title>
+    <title>ArcGIS Maps SDK for JavaScript Tutorials: Display your location</title>
 
     <style> /*resets brower so it can take up the full width and page*/
       html,
@@ -26,16 +26,17 @@
     <!--After the modules are loaded, they are passed as parameters (e.g. Map) to the callback function where they can be used in your application. It is important to keep the module references and callback parameters in the same order. -->
     <script>
         require([
-            "esri/config", 
-            "esri/Map", 
-            "esri/views/MapView", 
-            "esri/widget/Locate",
+          "esri/config",
+          "esri/Map",
+          "esri/views/MapView",
+          "esri/widgets/Locate",
+
         ], function(
-            esriConfig, 
+            esriConfig,
             Map,
-            MapView, 
+            MapView,
             Locate,
-            
+
         ) {
   
             
