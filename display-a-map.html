@@ -1,10 +1,11 @@
+<!--Not displaying content, comment out API key and it leads you to login (no organizatin login)-->
 <html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
     <title>ArcGIS Maps SDK for JavaScript Tutorials: Display a map</title>
 
-    <style>
+    <style> /*resets brower so it can take up the full width and page*/
       html,
       body,
       #viewDiv {
@@ -15,15 +16,18 @@
       }
     </style>
 
+    <!--AMD modules, required (or others) uses reference to determine which modles will be loaded eg. "esri/Map"-->
     <link rel="stylesheet" href="https://js.arcgis.com/4.28/esri/themes/light/main.css">
     <script src="https://js.arcgis.com/4.28/"></script>
 
+
+    <!--After the modules are loaded, they are passed as parameters (e.g. Map) to the callback function where they can be used in your application. It is important to keep the module references and callback parameters in the same order. -->
     <script>
         require(["esri/config", "esri/Map", "esri/views/MapView"], function(esriConfig, Map, MapView) {
   
-            //esriConfig.apiKey = "AAPKc8152f6cf74f4154a6f3a0f162f279f0ap849nbSkQHGytlqFycoHc64UMmI-k5VJLP2rtbOtxRWITQjVMSBbyTXPhL9hajF";
+            //esriConfig.apiKey = "AAPKc8152f6cf74f4154a6f3a0f162f279f0ap849nbSkQHGytlqFycoHc64UMmI-k5VJLP2rtbOtxRWITQjVMSBbyTXPhL9hajF"; //API key
 
-        const map = new Map({
+        const map = new Map({ //create new map
           basemap: "arcgis/topographic" // basemap styles service
         });
 
@@ -40,6 +44,6 @@
 
   </head>
   <body>
-    <div id="viewDiv"></div>
+    <div id="viewDiv"></div>  <!-- where the map goes -->
   </body>
 </html>
